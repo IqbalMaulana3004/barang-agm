@@ -49,15 +49,16 @@
 						
 					</div>
 				</div>
-				<form action="{{ route('pegawai.store') }}" method="POST">
+				<form action="{{ route('pegawai.update', $pegawai->kode_pegawai) }}" method="POST">
 					@csrf
+                    @method('PUT')
 					<div class="row">
 						<div class="col-md-6 col-sm-12">
 							<div class="form-group ">
 								<label class="form-control-label">Nama Pegawai</label>
 								<input
 									type="text"
-									class="form-control " name="nama_pegawai"
+									class="form-control " name="nama_pegawai" value="{{ $pegawai->nama_pegawai }}"
 								/>
 								@error('nama_pegawai')
 									<div class="form-control-feedback has-danger">
@@ -70,7 +71,7 @@
 								<label class="form-control-label">Alamat</label>
 								<input
 									type="text"
-									class="form-control " name="alamat"
+									class="form-control " name="alamat" value="{{ $pegawai->alamat }}"
 								/>
 								@error('alamat')
 									<div class="form-control-feedback has-danger">
@@ -83,7 +84,7 @@
 								<label class="form-control-label">Jenis Kelamin</label>
 								<input
 									type="text"
-									class="form-control " name="jenis_kelamin"
+									class="form-control " name="jenis_kelamin" value="{{ $pegawai->jenis_kelamin }}"
 								/>
 								@error('jenis_kelamin')
 									<div class="form-control-feedback has-danger">
@@ -98,7 +99,7 @@
 								<label class="form-control-label">Departemen</label>
 								<input
 									type="text"
-									class="form-control " name="departemen"
+									class="form-control " name="departemen" value="{{ $pegawai->departemen }}"
 								/>
 								@error('departemen')
 									<div class="form-control-feedback has-danger">
@@ -111,7 +112,7 @@
 								<label class="form-control-label">Jabatan</label>
 								<input
 									type="text"
-									class="form-control" name="jabatan"
+									class="form-control" name="jabatan" value="{{ $pegawai->jabatan }}"
 								/>
 								@error('jabatan')
 									<div class="form-control-feedback has-danger">
@@ -123,7 +124,7 @@
 								<label class="form-control-label">No Telfon</label>
 								<input
 									type="text"
-									class="form-control " name="no_telfn"
+									class="form-control " name="no_telfn" value="{{ $pegawai->no_telfn }}"
 								/>
 								@error('no_telfn')
 									<div class="form-control-feedback has-danger">

@@ -118,12 +118,6 @@
 								<h2 class="text-center text-primary">Login To Inventory AGM</h2>
 							</div>
 
-							<!-- Pesan Error -->
-							@if ($errors->any())
-								<div class="alert alert-danger" role="alert">
-									{{ $errors->first() }}
-								</div>
-							@endif
 							<!-- End Pesan Error -->
 
 							<form action="/auth/login" method="POST">
@@ -142,6 +136,9 @@
 											><i class="icon-copy dw dw-user1"></i
 										></span>
 									</div>
+									@error('username')
+										<div class="text-danger">{{ $message }}</div>
+									@enderror
 								</div>
 								<div class="input-group custom">
 									<input
@@ -154,6 +151,9 @@
 											><i class="dw dw-padlock1"></i
 										></span>
 									</div>
+									@error('password')
+										<div class="text-danger">{{ $message }}</div>
+									@enderror
 								</div>
 								<div class="row pb-30">
 									<div class="col-6">

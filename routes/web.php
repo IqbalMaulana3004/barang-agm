@@ -18,8 +18,9 @@ use App\Http\Controllers\AntarmukaController;
 
 // Login
 Route::get('/', [AntarmukaController::class, 'index']);
-Route::get('/auth/logout', [AuthController::class, 'logout']);
+// Route::get('/auth/logout', [AuthController::class, 'logout']);
 Route::post('/auth/login', [AuthController::class, 'prosesLogin']);
+Route::post('/auth/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Dashboard
 Route::get('/adminDash', [AntarmukaController::class, 'adminDashboard']);
@@ -27,8 +28,7 @@ Route::get('/stafDash', [AntarmukaController::class, 'stafDashboard']);
 Route::get('/KepItDash', [AntarmukaController::class, 'kepalaItDashboard']);
 
 //Pegawai
-Route::get('/pegawai', [AntarmukaController::class, 'pegawaiView']);
-Route::get('/pegawai/tambah', [PegawaiController::class, 'createPegawai']);
+Route::resource('/pegawai', PegawaiController::class);
 
 
 

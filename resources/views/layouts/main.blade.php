@@ -10,19 +10,19 @@
 		<link
 			rel="apple-touch-icon"
 			sizes="180x180"
-			href="vendors/images/apple-touch-icon.png"
+			href="{{ asset('vendors/images/apple-touch-icon.png') }}"
 		/>
 		<link
 			rel="icon"
 			type="image/png"
 			sizes="32x32"
-			href="vendors/images/favicon-32x32.png"
+			href="{{ asset('vendors/images/favicon-32x32.png') }}"
 		/>
 		<link
 			rel="icon"
 			type="image/png"
 			sizes="16x16"
-			href="vendors/images/favicon-16x16.png"
+			href="{{ asset('vendors/images/favicon-16x16.png') }}"
 		/>
 
 		<!-- Mobile Specific Metas -->
@@ -37,23 +37,23 @@
 			rel="stylesheet"
 		/>
 		<!-- CSS -->
-		<link rel="stylesheet" type="text/css" href="vendors/styles/core.css" />
+		<link rel="stylesheet" type="text/css" href="{{ asset('vendors/styles/core.css') }}" />
 		<link
 			rel="stylesheet"
 			type="text/css"
-			href="vendors/styles/icon-font.min.css"
+			href="{{ asset('vendors/styles/icon-font.min.css') }}"
 		/>
 		<link
 			rel="stylesheet"
 			type="text/css"
-			href="src/plugins/datatables/css/dataTables.bootstrap4.min.css"
+			href="{{ asset('src/plugins/datatables/css/dataTables.bootstrap4.min.css') }}"
 		/>
 		<link
 			rel="stylesheet"
 			type="text/css"
-			href="src/plugins/datatables/css/responsive.bootstrap4.min.css"
+			href="{{ asset('src/plugins/datatables/css/responsive.bootstrap4.min.css') }}"
 		/>
-		<link rel="stylesheet" type="text/css" href="vendors/styles/style.css" />
+		<link rel="stylesheet" type="text/css" href="{{ asset('vendors/styles/style.css') }}" />
 
 		<!-- Global site tag (gtag.js) - Google Analytics -->
 		<script
@@ -88,16 +88,6 @@
 			})(window, document, "script", "dataLayer", "GTM-NXZMQSS");
 		</script>
 		<!-- End Google Tag Manager -->
-
-		<!-- active sidebar -->
-		<!-- <style>
-			/* .active class styling */
-				.active {
-				background-color: #007bff;
-				color: #fff;
-				font-weight: bold;
-				}
-		</style> -->
 	</head>
 	<body>
 
@@ -110,16 +100,24 @@
 		</div>
 	
 		<!-- js -->
-		<script src="vendors/scripts/core.js"></script>
-		<script src="vendors/scripts/script.min.js"></script>
-		<script src="vendors/scripts/process.js"></script>
-		<script src="vendors/scripts/layout-settings.js"></script>
-		<script src="src/plugins/apexcharts/apexcharts.min.js"></script>
-		<script src="src/plugins/datatables/js/jquery.dataTables.min.js"></script>
-		<script src="src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
-		<script src="src/plugins/datatables/js/dataTables.responsive.min.js"></script>
-		<script src="src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
-		<script src="vendors/scripts/dashboard.js"></script>
+		<script src="{{ asset('vendors/scripts/core.js') }}"></script>
+		<script src="{{ asset('vendors/scripts/script.min.js') }}"></script>
+		<script src="{{ asset('vendors/scripts/process.js') }}"></script>
+		<script src="{{ asset('vendors/scripts/layout-settings.js') }}"></script>
+		<script src="{{ asset('src/plugins/datatables/js/jquery.dataTables.min.js') }}"></script>
+		<script src="{{ asset('src/plugins/datatables/js/dataTables.bootstrap4.min.js') }}"></script>
+		<script src="{{ asset('src/plugins/datatables/js/dataTables.responsive.min.js') }}"></script>
+		<script src="{{ asset('src/plugins/datatables/js/responsive.bootstrap4.min.js') }}"></script>
+		<!-- buttons for Export datatable -->
+		<script src="{{ asset('src/plugins/datatables/js/dataTables.buttons.min.js') }}"></script>
+		<script src="{{ asset('src/plugins/datatables/js/buttons.bootstrap4.min.js') }}"></script>
+		<script src="{{ asset('src/plugins/datatables/js/buttons.print.min.js') }}"></script>
+		<script src="{{ asset('src/plugins/datatables/js/buttons.html5.min.js') }}"></script>
+		<script src="{{ asset('src/plugins/datatables/js/buttons.flash.min.js') }}"></script>
+		<script src="{{ asset('src/plugins/datatables/js/pdfmake.min.js') }}"></script>
+		<script src="{{ asset('src/plugins/datatables/js/vfs_fonts.js') }}"></script>
+		<!-- Datatable Setting js -->
+		<script src="{{ asset('vendors/scripts/datatable-setting.js') }}"></script>
 		<!-- Google Tag Manager (noscript) -->
 		<noscript
 			><iframe
@@ -130,20 +128,5 @@
 			></iframe
 		></noscript>
 		<!-- End Google Tag Manager (noscript) -->
-
-		<!-- js active -->
-		<!-- <script>
-			// Function to determine if a sidebar link is active
-			function isActive(link) {
-			return link.href === window.location.href;
-			}
-
-			// Add the active class to the sidebar link if it is active
-			$(".nav-link").each(function(index, link) {
-			if (isActive(link)) {
-				$(link).addClass("active");
-			}
-			});
-		</script> -->
 	</body>
 </html>

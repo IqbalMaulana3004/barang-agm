@@ -22,77 +22,60 @@ class AuthController extends Controller
      */
     public function prosesLogin(Request $request)
     {
-        // Session
-        Session::flash('username', $request->username);
-
         // Validate input
         $request->validate([
             'username' => 'required',
             'password' => 'required',
         ], [
-            'username.required' => 'Username Wajib Diisi',
-            'password.required' => 'Password Wajib Diisi',
+            'username.required' => 'Username wajib diisi',
+            'password.required' => 'Password wajib diisi',
         ]);
     
-        // Prepare login information
-        // $infoLogin = [
-        //     'username' => $request->username,
-        //     'password' => $request->password,
-        // ];
-    
-        // Attempt authentication
-        // if (Auth::attempt($infoLogin)) {
- 
-        //     if (Auth::user()->role == 'admin') {
-        //         // Admin Dash
-        //         return redirect('adminDash');
-
-        //     }elseif (Auth::user()->role == 'staf') {
-        //         // Kep Dash
-        //         return redirect('dashboard.staf');
-
-        //     }else {
-        //         // staf Dash
-        //         return redirect('dashboard.kep_it');
-        //     }
-    
-        // } else {
-        //     // If authentication fails, redirect with error message
-        //     return redirect('/')->withErrors('Cek Kambali Username Dan Passwod !!!');
-        // }
-
+        // Mencari user berdasarkan username
         $user = User::where('username', $request->username)->first();
-
+    
         // Jika user ada
         if ($user) {
-            // Verifikasi Password
-            if (Hash::check($request->password, $user->password)) {
-                Auth::login($user);
-
-                // set session
-                Session::put('username', $user->username);
-                Session::put('role', $user->role);
-
-                if ($user->role === 'admin') {
-                    return redirect('adminDash');
-                } elseif ($user->role === 'staf') {
-                    return redirect('stafDash');
-                } else {
-                    return redirect('KepItDash');
-                }
-            }else {
-                 // Display error message for incorrect password
-                return redirect()->back()->with('error', 'Password Yang Anda Masukkan Salah');
+            // Verifikasi Password menggunakan fungsi otentikasi Laravel
+            if (Auth::attempt(['username' => $request->username, 'password' => $request->password])) {
+                // Set session
+                session()->put('username', $user->username);
+                session()->put('role', $user->role);
+    
+                // Redirect berdasarkan peran (role) user
+                return redirect($this->redirectBasedOnRole($user->role));
+            } else {
+                // Display error message for incorrect password
+                return redirect()->back()->withErrors(['password' => 'Password yang Anda masukkan salah']);
             }
-        }else {
-            // Display Error
-            return redirect()->back()->with('error', 'Username Tidak Terdaftar');
+        } else {
+            // Display error message for non-existent username
+            return redirect()->back()->withErrors(['username' => 'Username tidak terdaftar']);
         }
     }
+    
+    // Metode untuk menentukan redirect berdasarkan peran (role) user
+    private function redirectBasedOnRole($role)
+    {
+        switch ($role) {
+            case 'admin':
+                return 'adminDash';
+            case 'staf':
+                return 'stafDash';
+            default:
+                return 'KepItDash';
+        }
+    }
+    
+    public function logout(Request $request)
+    {
+        Auth::logout(); // Lakukan logout user
 
-    public function logout() {
-        Auth::logout();
-        return redirect('/')->with('success','Berhasil Logout');
+        $request->session()->invalidate(); // Hapus sesi user
+
+        $request->session()->regenerateToken(); // Regenerate CSRF token
+
+        return redirect('/')->with('success', 'Anda telah berhasil logout.');
     }
     
 
