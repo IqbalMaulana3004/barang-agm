@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\AntarmukaController;
+use App\Http\Controllers\BarangMasukController;
+use App\Http\Controllers\BarangRusakController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,16 +32,14 @@ Route::get('/KepItDash', [AntarmukaController::class, 'kepalaItDashboard']);
 //Pegawai
 Route::resource('/pegawai', PegawaiController::class);
 
+// Stok-Barang
+Route::get('stok-barang', [AntarmukaController::class, 'stokBarang']);
 
+// Barang-Masuk
+Route::resource('/barang-masuk', BarangMasukController::class);
 
-
-
-
-
-// Barang Masuk
-Route::get('/barang-masuk', function () {
-    return view('barang/barang_masuk', ["title" => "Data Pegawai"]);
-});
+// Barang-Rusak
+Route::resource('/barang-rusak', BarangRusakController::class);
 
 Route::get('/barang-dipinjam', function () {
     return view('barang/barang_dipinjam', ["title" => "Data Pegawai"]);
@@ -47,8 +47,4 @@ Route::get('/barang-dipinjam', function () {
 
 Route::get('/barang-dikembalikan', function () {
     return view('barang/barang_dikembalikan', ["title" => "Data Pegawai"]);
-})->name('table');
-
-Route::get('/barang-rusak', function () {
-    return view('barang/barang_rusak', ["title" => "Data Pegawai"]);
 })->name('table');

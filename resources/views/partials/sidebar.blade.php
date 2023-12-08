@@ -203,20 +203,32 @@
 				<li class="dropdown">
 					<a href="javascript:;" class="dropdown-toggle">
 						<span class="micon bi bi-pie-chart"></span
-						><span class="mtext">Barang</span>
+						><span class="mtext">Master Barang</span>
 					</a>
 					<ul class="submenu">
 						<li class="">
+							<a href="/stok-barang">Stok Barang</a>
+						</li>
+						<li class="">
 							<a href="/barang-masuk">Barang Masuk</a>
 						</li>
+						<li class="">
+							<a href="/barang-rusak">Barang Rusak</a>
+						</li>
+					</ul>
+				</li>
+
+				<li class="dropdown">
+					<a href="javascript:;" class="dropdown-toggle">
+						<span class="micon bi bi-pie-chart"></span
+						><span class="mtext">Peminjaman</span>
+					</a>
+					<ul class="submenu">
 						<li class="">
 							<a href="/barang-dipinjam">Barang Dipinjam</a>
 						</li>
 						<li class="">
 							<a href="/barang-dikembalikan">Barang Dikembalikan</a>
-						</li>
-						<li class="">
-							<a href="/barang-rusak">Barang Rusak</a>
 						</li>
 					</ul>
 				</li>

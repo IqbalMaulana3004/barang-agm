@@ -22,21 +22,13 @@
 							</nav>
 						</div>
 						<div class="col-md-6 col-sm-12 text-right">
-							<div class="dropdown">
 								<a
 									class="btn btn-primary"
-									href="#"
-									role="button"
-									data-toggle="dropdown"
+									href="barang-rusak/create"
 								>
 									Tambah Data
 								</a>
-								<div class="dropdown-menu dropdown-menu-right">
-									<a class="dropdown-item" href="#">Export List</a>
-									<a class="dropdown-item" href="#">Policies</a>
-									<a class="dropdown-item" href="#">View Assets</a>
-								</div>
-							</div>
+						
 						</div>
 					</div>
 				</div>
@@ -50,21 +42,27 @@
 						<table class="data-table table stripe hover nowrap">
 							<thead>
 								<tr>
-									<th class="table-plus datatable-nosort">Nama Barang</th>
+									<th class="table-plus datatable-nosort">No</th>
+									<th>Nama Barang</th>
+									<th>Jenis Barang</th>
+									<th>Merek</th>
 									<th>Jumlah</th>
-									<th>Tanggal</th>
-									<th>Deskripsi</th>
-									<th>Lokasi Penyimpanan</th>
+									<th>Tanggal Masuk</th>
 									<th class="datatable-nosort">Action</th>
 								</tr>
 							</thead>
 							<tbody>
+								@php
+									$no = 1;
+								@endphp
+								@foreach ($data as $item)
 								<tr>
-									<td class="table-plus">Printer</td>
-									<td>1</td>
-									<td>09-Juni-2023</td>
-									<td>Hasil cetakan bergaris-garis</td>
-									<td>Tatakan</td>
+									<td class="table-plus">{{ $no++ }}</td>
+									<td>{{ $item->nama_barang }}</td>
+									<td>{{ $item->jenis_barang }}</td>
+									<td>{{ $item->merek }}</td>
+									<td>{{ $item->jumlah_kelola }}</td>
+									<td>{{ $item->tanggal_kelola }}</td>
 									<td>
 										<div class="dropdown">
 											<a
@@ -91,6 +89,8 @@
 										</div>
 									</td>
 								</tr>
+								@endforeach
+								
 							</tbody>
 						</table>
 					</div>

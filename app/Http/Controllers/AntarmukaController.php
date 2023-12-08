@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Barang;
 use App\Models\Pegawai;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -43,9 +44,11 @@ class AntarmukaController extends Controller
         return view('pegawai.view_pegawai', compact('data'), ["title" => "Data Pegawai"]);
     }
 
-    public function update(Request $request, $id)
+    public function stokBarang()
     {
         //
+        $data = Barang::all();
+        return view('barang.semua_barang', compact('data'), ["title" => "Data Pegawai"]);
     }
 
     public function destroy($id)
